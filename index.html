@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OOP Programs & Mini-Project | C++ Showcase</title>
+  <meta name="description" content="Object-Oriented Programming Practicals in C++ and CarePass Hospital Management Mini-Project. Deployed on Vercel.">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Prism.js for C++ Syntax Highlighting -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['"Fira Code"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#f0fdf4',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    pre[class*="language-"] {
+      border-radius: 0.75rem;
+      margin: 0;
+      font-size: 0.875rem;
+      background: #111827 !important;
+    }
+    code[class*="language-"] {
+      font-family: 'Fira Code', monospace;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: #1f2937;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #374151;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body class="bg-gray-950 text-gray-100 min-h-screen flex flex-col font-sans selection:bg-emerald-500 selection:text-white">
+
+  <!-- Top Navbar -->
+  <header class="border-b border-gray-800 bg-gray-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="h-10 w-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-cyan-500 flex items-center justify-center font-mono font-bold text-lg text-white shadow-lg shadow-emerald-500/20">
+          C++
+        </div>
+        <div>
+          <h1 class="text-base sm:text-lg font-bold text-white tracking-tight flex items-center gap-2">
+            OOP Programs & Mini-Project
+            <span class="text-xs font-normal px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Vercel Ready</span>
+          </h1>
+          <p class="text-xs text-gray-400">Practical Lab & CarePass Hospital Management</p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-3">
+        <a href="https://github.com/sanskruti01study-hub/OOP-Programs-Project" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 text-sm bg-gray-800 hover:bg-gray-700 text-gray-200 px-3 py-1.5 rounded-lg border border-gray-700 transition duration-150">
+          <i class="fa-brands fa-github text-base"></i>
+          <span class="hidden sm:inline">GitHub Repository</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+    <!-- Sidebar / Navigation -->
+    <aside class="lg:col-span-4 xl:col-span-3 space-y-4">
+      <div class="bg-gray-900/90 border border-gray-800 rounded-2xl p-4 shadow-xl">
+        <div class="flex items-center justify-between mb-3 px-2">
+          <span class="text-xs font-semibold uppercase tracking-wider text-gray-400">Lab Experiments</span>
+          <span class="text-xs bg-gray-800 text-gray-400 px-2 py-0.5 rounded-full" id="expCountBadge">8 Programs</span>
+        </div>
+        <nav class="space-y-1.5" id="navItems">
+          <!-- Dynamically generated navigation links -->
+        </nav>
+      </div>
+
+      <!-- Quick Info Card -->
+      <div class="bg-gradient-to-br from-emerald-950/40 to-gray-900 border border-emerald-900/40 rounded-2xl p-4 text-xs space-y-2 text-gray-300">
+        <div class="flex items-center gap-2 text-emerald-400 font-semibold">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span>Object Oriented Concepts</span>
+        </div>
+        <p class="text-gray-400 leading-relaxed">
+          Comprehensive practical implementations illustrating core OOP principles: Classes, Objects, Inheritance, Virtual Polymorphism, Operator Overloading, and Templates.
+        </p>
+      </div>
+    </aside>
+
+    <!-- Main Content Panel -->
+    <main class="lg:col-span-8 xl:col-span-9 space-y-6">
+
+      <!-- Experiment Header & Metadata -->
+      <div class="bg-gray-900/90 border border-gray-800 rounded-2xl p-6 shadow-xl">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-gray-800">
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span id="badgeCategory" class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                Core OOP
+              </span>
+              <span id="badgeFilename" class="text-xs font-mono text-gray-400">Experiment-1.cpp</span>
+            </div>
+            <h2 id="expTitle" class="text-xl sm:text-2xl font-bold text-white">Basic Syntax & Data Types</h2>
+            <p id="expSubtitle" class="text-sm text-gray-400 mt-1">Introduction to fundamental C++ data types, variable declarations, and stream I/O operations.</p>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <button onclick="copyCode()" class="inline-flex items-center gap-1.5 text-xs font-medium bg-gray-800 hover:bg-gray-700 text-gray-200 px-3 py-2 rounded-lg border border-gray-700 transition">
+              <i class="fa-regular fa-copy" id="copyIcon"></i>
+              <span id="copyText">Copy Code</span>
+            </button>
+            <a id="downloadBtn" href="#" download="" class="inline-flex items-center gap-1.5 text-xs font-medium bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-2 rounded-lg shadow-lg shadow-emerald-600/20 transition">
+              <i class="fa-solid fa-download"></i>
+              <span>Download .cpp</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Concept Pill Highlights -->
+        <div class="pt-4 flex flex-wrap gap-2" id="conceptPills">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Tab Buttons for Code / Output / Interactive Simulator -->
+      <div class="flex items-center gap-2 border-b border-gray-800">
+        <button onclick="switchTab('code')" id="tabCode" class="px-4 py-2 text-sm font-medium border-b-2 border-emerald-500 text-emerald-400 transition flex items-center gap-2">
+          <i class="fa-solid fa-code"></i>
+          <span>C++ Source Code</span>
+        </button>
+        <button onclick="switchTab('output')" id="tabOutput" class="px-4 py-2 text-sm font-medium border-b-2 border-transparent text-gray-400 hover:text-gray-200 transition flex items-center gap-2">
+          <i class="fa-solid fa-terminal"></i>
+          <span>Expected Output</span>
+        </button>
+        <button onclick="switchTab('interactive')" id="tabInteractive" class="px-4 py-2 text-sm font-medium border-b-2 border-transparent text-gray-400 hover:text-gray-200 transition flex items-center gap-2">
+          <i class="fa-solid fa-play"></i>
+          <span>Interactive Simulator</span>
+        </button>
+      </div>
+
+      <!-- Tab 1: Source Code -->
+      <div id="viewCode" class="bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden shadow-2xl">
+        <div class="bg-gray-950 px-4 py-2.5 border-b border-gray-800 flex items-center justify-between text-xs text-gray-400 font-mono">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+            <span id="codeEditorLabel" class="ml-2 text-gray-300">Experiment-1.cpp</span>
+          </div>
+          <span class="text-gray-500">C++17 / C++20</span>
+        </div>
+        <div class="p-4 custom-scroll max-h-[600px] overflow-auto">
+          <pre><code id="codeBlock" class="language-cpp"></code></pre>
+        </div>
+      </div>
+
+      <!-- Tab 2: Terminal Output -->
+      <div id="viewOutput" class="hidden bg-gray-950 border border-gray-800 rounded-2xl p-5 font-mono text-sm shadow-2xl">
+        <div class="flex items-center justify-between pb-3 mb-3 border-b border-gray-800 text-xs text-gray-500">
+          <span>Terminal Simulation Output</span>
+          <span>Exit code: 0</span>
+        </div>
+        <pre id="outputBlock" class="text-emerald-400 whitespace-pre-wrap leading-relaxed custom-scroll"></pre>
+      </div>
+
+      <!-- Tab 3: Interactive Web Simulator -->
+      <div id="viewInteractive" class="hidden bg-gray-900 border border-gray-800 rounded-2xl p-6 shadow-2xl space-y-6">
+        <div id="interactiveContent">
+          <!-- Loaded dynamically based on active item -->
+        </div>
+      </div>
+
+      <!-- How to Run Locally Section -->
+      <div class="bg-gray-900/60 border border-gray-800 rounded-2xl p-5 text-xs text-gray-400 space-y-3">
+        <h4 class="font-semibold text-gray-200 text-sm flex items-center gap-2">
+          <i class="fa-solid fa-terminal text-emerald-400"></i>
+          How to Compile & Run Locally
+        </h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono">
+          <div class="bg-gray-950 p-3 rounded-xl border border-gray-800">
+            <div class="text-gray-500 mb-1"># Linux / macOS / MinGW:</div>
+            <div class="text-emerald-300" id="cmdGpp">g++ -o app Experiment-1.cpp && ./app</div>
+          </div>
+          <div class="bg-gray-950 p-3 rounded-xl border border-gray-800">
+            <div class="text-gray-500 mb-1"># Windows (PowerShell):</div>
+            <div class="text-emerald-300" id="cmdWin">g++ -o app.exe Experiment-1.cpp ; .\app.exe</div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-800 bg-gray-900/90 py-6 mt-12 text-center text-xs text-gray-500">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div>
+        Created for <strong class="text-gray-300 font-medium">OOP-Programs-Project</strong> | Author: Sanskruti Renuse
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="text-emerald-400 flex items-center gap-1.5">
+          <i class="fa-solid fa-circle-check text-xs"></i> Deployed on Vercel
+        </span>
+        <a href="https://github.com/sanskruti01study-hub/OOP-Programs-Project" target="_blank" class="hover:text-gray-300 transition">
+          <i class="fa-brands fa-github"></i> Repository
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const experiments = [
+      {
+        id: "exp1",
+        filename: "Experiment-1.cpp",
+        title: "Basic Syntax & Data Types",
+        category: "Foundations",
+        badgeColor: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+        subtitle: "Declaration of primitive data types (int, float, char, bool) and standard stream output operations.",
+        concepts: ["Primitive Data Types", "cout / endl", "Arithmetic Operations", "Standard Namespace"],
+        code: `#include <iostream>
+using namespace std;
+
+int main()
+{
+    int a = 10;
+    int b = 5;
+    float c = 3.14;
+    char ch = 's';
+    bool isTrue = true;
+
+    cout << "sum:" << a + b << endl;
+    cout << "sub:" << a - b << endl;
+    cout << "multiplication:" << a * b << endl;
+    cout << "division:" << a / b << endl;
+    cout << "character:" << ch << endl;
+    cout << "boolean value:" << isTrue << endl;
+
+    return 0;
+}`,
+        output: `sum:15
+sub:5
+multiplication:50
+division:2
+character:s
+boolean value:1`,
+        renderInteractive: (container) => {
+          container.innerHTML = \`
+            <h3 class="text-lg font-bold text-white mb-2">Arithmetic & Data Type Evaluator</h3>
+            <p class="text-sm text-gray-400 mb-4">Adjust values to observe real-time C++ variable evaluation and stream output.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+              <div>
+                <label class="block text-xs font-mono text-gray-400 mb-1">Variable 'a' (int):</label>
+                <input id="inA" type="number" value="10" class="w-full bg-gray-950 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500">
+              </div>
+              <div>
+                <label class="block text-xs font-mono text-gray-400 mb-1">Variable 'b' (int):</label>
+                <input id="inB" type="number" value="5" class="w-full bg-gray-950 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500">
+              </div>
+            </div>
+            <div class="bg-gray-950 p-4 rounded-xl border border-gray-800 font-mono text-sm text-emerald-400" id="liveExp1Out"></div>
+          \`;
+          const update = () => {
+            const a = parseFloat(document.getElementById('inA').value) || 0;
+            const b = parseFloat(document.getElementById('inB').value) || 0;
+            document.getElementById('liveExp1Out').innerHTML = \`
+              sum:\${a + b}<br>
+              sub:\${a - b}<br>
+              multiplication:\${a * b}<br>
+              division:\${b !== 0 ? Math.floor(a / b) : 'Division by zero'}<br>
+              character:s<br>
+              boolean value:1
+            \`;
+          };
+          document.getElementById('inA').addEventListener('input', update);
+          document.getElementById('inB').addEventListener('input', update);
+          update();
+        }
+      },
+      {
+        id: "exp2",
+        filename: "Experiment-2.cpp",
+        title: "Classes, Objects & Encapsulation",
+        category: "Classes & Objects",
+        badgeColor: "bg-indigo-500/10 text-indigo-400 border-indigo-500/20",
+        subtitle: "Class declaration, private member data encapsulation, and public member methods for state manipulation.",
+        concepts: ["Encapsulation", "Data Hiding (private)", "Member Functions", "Object Instantiation"],
+        code: `#include <iostream>
+#include <string>
+using namespace std;
+
+class vehicle
+{
+private:
+    string brand;
+    int price;
+
+public:
+    void input()
+    {
+        cout << "enter brand:";
+        cin >> brand;
+        cout << "enter price:";
+        cin >> price;
+    }
+
+    void display()
+    {
+        cout << endl;
+        cout << "brand:" << brand << endl;
+        cout << "price:" << price << endl;
+    }
+};
+
+int main()
+{
+    vehicle v;
+    v.input();
+    v.display();
+
+    return 0;
+}`,
+        output: `enter brand: Toyota
+enter price: 25000
+
+brand: Toyota
+price: 25000`,
+        renderInteractive: (container) => {
+          container.innerHTML = \`
+            <h3 class="text-lg font-bold text-white mb-2">Vehicle Object Simulator</h3>
+            <p class="text-sm text-gray-400 mb-4">Simulate private member encapsulation and the <code>input()</code> & <code>display()</code> methods.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+              <div>
+                <label class="block text-xs font-mono text-gray-400 mb-1">Brand Name:</label>
+                <input id="vBrand" type="text" value="Honda" class="w-full bg-gray-950 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500">
+              </div>
+              <div>
+                <label class="block text-xs font-mono text-gray-400 mb-1">Price ($):</label>
+                <input id="vPrice" type="number" value="22000" class="w-full bg-gray-950 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500">
+              </div>
+            </div>
+            <button onclick="runVehicleSim()" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs px-4 py-2 rounded-lg font-medium transition mb-4">
+              Invoke v.display()
+            </button>
+            <div class="bg-gray-950 p-4 rounded-xl border border-gray-800 font-mono text-sm text-emerald-400" id="liveExp2Out">
+              brand: Honda<br>price: 22000
+            </div>
+          \`;
+          window.runVehicleSim = () => {
+            const b = document.getElementById('vBrand').value;
+            const p = document.getElementById('vPrice').value;
+            document.getElementById('liveExp2Out').innerHTML = \`brand:\${b}<br>price:\${p}\`;
+          };
+        }
+      },
+      {
+        id: "exp3",
+        filename: "Experiment-3.cpp",
+        title: "Constructors in C++",
+        category: "Constructors",
+        badgeColor: "bg-purple-500/10 text-purple-400 border-purple-500/20",
+        subtitle: "Implementation of Default Constructor, Parameterized Constructor, and Copy Constructor in a Student class.",
+        concepts: ["Default Constructor", "Parameterized Constructor", "Copy Constructor", "Deep vs Shallow Copy"],
+        code: `#include <iostream>
+#include <string>
+using namespace std;
+
+class Student
+{
+    string name;
+    int age;
+
+public:
+    // Default Constructor
+    Student()
+    {
+        name = "Unknown";
+        age = 0;
+    }
+
+    // Parameterized Constructor
+    Student(string n, int a)
+    {
+        name = n;
+        age = a;
+    }
+
+    // Copy Constructor
+    Student(const Student &s)
+    {
+        name = s.name;
+        age = s.age;
+    }
+};
+
+int main()
+{
+    Student a;           // Default
+    Student b("A", 9);   // Parameterized
+    Student c(b);        // Copy Constructor
+
+    return 0;
+}`,
+        output: `// Object a created: name = "Unknown", age = 0
+// Object b created: name = "A", age = 9
+// Object c copied from b: name = "A", age = 9`,
+        renderInteractive: (container) => {
+          container.innerHTML = \`
+            <h3 class="text-lg font-bold text-white mb-2">Constructor Lifetime Inspector</h3>
+            <p class="text-sm text-gray-400 mb-4">Inspect how memory and state are initialized across constructor variants.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="bg-gray-950 p-4 rounded-xl border border-gray-800">
+                <span class="text-xs font-semibold text-emerald-400 block mb-1">1. Default Constructor</span>
+                <code class="text-xs text-gray-300 block mb-2">Student a;</code>
+                <div class="text-xs text-gray-400">Name: <span class="text-white">"Unknown"</span></div>
+                <div class="text-xs text-gray-400">Age: <span class="text-white">0</span></div>
+              </div>
+              <div class="bg-gray-950 p-4 rounded-xl border border-gray-800">
+                <span class="text-xs font-semibold text-cyan-400 block mb-1">2. Parameterized</span>
+                <code class="text-xs text-gray-300 block mb-2">Student b("Sanskruti", 20);</code>
+                <div class="text-xs text-gray-400">Name: <span class="text-white">"Sanskruti"</span></div>
+                <div class="text-xs text-gray-400">Age: <span class="text-white">20</span></div>
+              </div>
+              <div class="bg-gray-950 p-4 rounded-xl border border-gray-800">
+                <span class="text-xs font-semibold text-purple-400 block mb-1">3. Copy Constructor</span>
+                <code class="text-xs text-gray-300 block mb-2">Student c(b);</code>
+                <div class="text-xs text-gray-400">Name: <span class="text-white">"Sanskruti"</span></div>
+                <div class="text-xs text-gray-400">Age: <span class="text-white">20</span></div>
+              </div>
+            </div>
+          \`;
+        }
+      },
+      {
+        id: "exp5",
+        filename: "Experiment-5.cpp",
+        title: "Single & Multilevel Inheritance",
+        category: "Inheritance",
+        badgeColor: "bg-amber-500/10 text-amber-400 border-amber-500/20",
+        subtitle: "Class hierarchy with Person (Base) -> Student (Single Derived) -> GraduateStudent (Multilevel Derived).",
+        concepts: ["Base & Derived Classes", "Protected Access Specifier", "Member Initializer List", "Multilevel Hierarchy"],
+        code: `#include <iostream>
+#include <string>
+using namespace std;
+
+class Person
+{
+protected:
+    string name;
+    int age;
+    string URN;
+
+public:
+    Person(string n = "", int a = 0, string u = "")
+    {
+        name = n;
+        age = a;
+        URN = u;
+    }
+
+    void display_person()
+    {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+        cout << "URN: " << URN << endl;
+    }
+};
+
+// Single Inheritance
+class Student : public Person
+{
+protected:
+    string rollno;
+    string course;
+    float cgpa;
+
+public:
+    Student(string n = "", int a = 0, string u = "",
+            string r = "", string c = "", float g = 0.0)
+        : Person(n, a, u)
+    {
+        rollno = r;
+        course = c;
+        cgpa = g;
+    }
+
+    void display_student()
+    {
+        display_person();
+        cout << "Roll No: " << rollno << endl;
+        cout << "Course: " << course << endl;
+        cout << "CGPA: " << cgpa << endl;
+    }
+};
+
+// Multilevel Inheritance
+class GraduateStudent : public Student
+{
+private:
+    string thesisTopic;
+    string researchArea;
+    string supervisor;
+
+public:
+    GraduateStudent(string n = "", int a = 0, string u = "",
+                    string r = "", string c = "", float g = 0.0,
+                    string t = "", string ra = "", string s = "")
+        : Student(n, a, u, r, c, g)
+    {
+        thesisTopic = t;
+        researchArea = ra;
+        supervisor = s;
+    }
+
+    void display_graduate_student()
+    {
+        display_student();
+        cout << "Thesis: " << thesisTopic << endl;
+        cout << "Research: " << researchArea << endl;
+        cout << "Supervisor: " << supervisor << endl;
+    }
+};
+
+int main()
+{
+    GraduateStudent s1("Arjun S", 20, "URN2021B",
+                      "B1", "BTech", 8.7,
+                      "AI", "ML", "Dr. Sharma");
+
+    s1.display_graduate_student();
+
+    return 0;
+}`,
+        output: `Name: Arjun S
+Age: 20
+URN: URN2021B
+Roll No: B1
+Course: BTech
+CGPA: 8.7
+Thesis: AI
+Research: ML
+Supervisor: Dr. Sharma`,
+        renderInteractive: (container) => {
+          container.innerHTML = \`
+            <h3 class="text-lg font-bold text-white mb-2">Class Hierarchy Visualizer</h3>
+            <p class="text-sm text-gray-400 mb-4">Explore property inheritance down the 3-level object chain.</p>
+            <div class="space-y-3 font-mono text-xs">
+              <div class="p-3 rounded-lg border border-blue-500/30 bg-blue-950/20">
+                <span class="text-blue-400 font-bold block mb-1">Level 1: Person (Base Class)</span>
+                <span class="text-gray-300">Attributes: name, age, URN | Methods: display_person()</span>
+              </div>
+              <div class="text-center text-gray-500"><i class="fa-solid fa-arrow-down"></i> inherits (Single Inheritance)</div>
+              <div class="p-3 rounded-lg border border-purple-500/30 bg-purple-950/20">
+                <span class="text-purple-400 font-bold block mb-1">Level 2: Student : public Person</span>
+                <span class="text-gray-300">Added: rollno, course, cgpa | Methods: display_student()</span>
+              </div>
+              <div class="text-center text-gray-500"><i class="fa-solid fa-arrow-down"></i> inherits (Multilevel Inheritance)</div>
+              <div class="p-3 rounded-lg border border-emerald-500/30 bg-emerald-950/20">
+                <span class="text-emerald-400 font-bold block mb-1">Level 3: GraduateStudent : public Student</span>
+                <span class="text-gray-300">Added: thesisTopic, researchArea, supervisor | Methods: display_graduate_student()</span>
+              </div>
+            </div>
+          \`;
+        }
+      },
+      {
+        id: "exp6",
+        filename: "Experiment-6.cpp",
+        title: "Polymorphism & Abstract Class",
+        category: "Polymorphism",
+        badgeColor: "bg-pink-500/10 text-pink-400 border-pink-500/20",
+        subtitle: "Pure virtual function (virtual void area() = 0), abstract base class Shape, and dynamic runtime method overriding.",
+        concepts: ["Abstract Classes", "Pure Virtual Functions", "Runtime Polymorphism", "Virtual Destructor"],
+        code: `#include <iostream>
+using namespace std;
+
+class Shape
+{
+protected:
+    float r, l, w, b, h;
+
+public:
+    virtual void area() = 0; // Pure Virtual Function
+
+    virtual ~Shape() {}
+};
+
+class Circle : public Shape
+{
+public:
+    void area()
+    {
+        r = 5;
+        cout << "Area of circle: " << 3.14 * r * r << endl;
+    }
+};
+
+class Rectangle : public Shape
+{
+public:
+    void area()
+    {
+        l = 10;
+        w = 6;
+        cout << "Area of rectangle: " << l * w << endl;
+    }
+};
+
+class Triangle : public Shape
+{
+public:
+    void area()
+    {
+        b = 2;
+        h = 3;
+        cout << "Area of triangle: " << 0.5 * b * h << endl;
+    }
+};
+
+int main()
+{
+    Circle obj1;
+    obj1.area();
+
+    Rectangle obj2;
+    obj2.area();
+
+    Triangle obj3;
+    obj3.area();
+
+    return 0;
+}`,
+        output: `Area of circle: 78.5
+Area of rectangle: 60
+Area of triangle: 3`,
+        renderInteractive: (container) => {
+          container.innerHTML = \`
+            <h3 class="text-lg font-bold text-white mb-2">Dynamic Shape Area Calculator</h3>
+            <p class="text-sm text-gray-400 mb-4">Calculate areas through overridden <code>area()</code> implementations.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 font-sans mb-4">
+              <div class="bg-gray-950 p-4 rounded-xl border border-gray-800">
+                <span class="text-emerald-400 font-semibold text-sm block mb-2">Circle (r = 5)</span>
+                <span class="text-xs text-gray-400 block mb-1">Formula: 3.14 * r²</span>
+                <span class="text-xl font-bold font-mono text-white">78.50 sq. units</span>
+              </div>
+              <div class="bg-gray-950 p-4 rounded-xl border border-gray-800">
+                <span class="text-cyan-400 font-semibold text-sm block mb-2">Rectangle (10 × 6)</span>
+                <span class="text-xs text-gray-400 block mb-1">Formula: l * w</span>
+                <span class="text-xl font-bold font-mono text-white">60.00 sq. units</span>
+              </div>
+              <div class="bg-gray-950 p-4 rounded-xl border border-gray-800">
+                <span class="text-amber-400 font-semibold text-sm block mb-2">Triangle (b=2, h=3)</span>
+                <span class="text-xs text-gray-400 block mb-1">Formula: 0.5 * b * h</span>
+                <span class="text-xl font-bold font-mono text-white">3.00 sq. units</span>
+              </div>
+            </div>
+          \`;
+        }
+      },
+      {
+        id: "exp7",
+        filename: "Experiment-7.cpp",
+        title: "Operator Overloading",
+        category: "Operator Overloading",
+        badgeColor: "bg-teal-500/10 text-teal-400 border-teal-500/20",
+        subtitle: "Overloading binary operators '+' and '*' to perform custom complex number addition and multiplication.",
+        concepts: ["Binary Operator Overloading", "Complex Numbers", "Custom Return Types", "Operator Keywords"],
+        code: `#include <iostream>
+using namespace std;
+
+class Complex
+{
+    float real, imag;
+
+public:
+    Complex()
+    {
+        real = imag = 0;
+    }
+
+    Complex(float r, float i)
+    {
+        real = r;
+        imag = i;
+    }
+
+    Complex operator+(Complex c)
+    {
+        return Complex(real + c.real,
+                       imag + c.imag);
+    }
+
+    Complex operator*(Complex c)
+    {
+        return Complex(real * c.real - imag * c.imag,
+                       real * c.imag + imag * c.real);
+    }
+
+    void display()
+    {
+        cout << real << " + " << imag << "i" << endl;
+    }
+};
+
+int main()
+{
+    Complex c1(1, 2);
+    Complex c2(3, 4);
+
+    Complex c3 = c1 + c2;
+    Complex c4 = c1 * c2;
+
+    cout << "Addition: ";
+    c3.display();
+
+    cout << "Multiplication: ";
+    c4.display();
+
+    return 0;
+}`,
+        output: `Addition: 4 + 6i
+Multiplication: -5 + 10i`,
+        renderInteractive: (container) => {
+          container.innerHTML = \`
+            <h3 class="text-lg font-bold text-white mb-2">Interactive Complex Calculator</h3>
+            <p class="text-sm text-gray-400 mb-4">Input two complex numbers to test overloaded '+' and '*' operator results.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+              <div class="bg-gray-950 p-4 rounded-xl border border-gray-800 space-y-2">
+                <span class="text-xs font-semibold text-emerald-400">Complex Number 1 (c1)</span>
+                <div class="flex gap-2 items-center">
+                  <input id="c1r" type="number" value="1" class="w-20 bg-gray-900 border border-gray-700 px-2 py-1 rounded text-white text-sm">
+                  <span>+</span>
+                  <input id="c1i" type="number" value="2" class="w-20 bg-gray-900 border border-gray-700 px-2 py-1 rounded text-white text-sm">
+                  <span>i</span>
+                </div>
+              </div>
+              <div class="bg-gray-950 p-4 rounded-xl border border-gray-800 space-y-2">
+                <span class="text-xs font-semibold text-cyan-400">Complex Number 2 (c2)</span>
+                <div class="flex gap-2 items-center">
+                  <input id="c2r" type="number" value="3" class="w-20 bg-gray-900 border border-gray-700 px-2 py-1 rounded text-white text-sm">
+                  <span>+</span>
+                  <input id="c2i" type="number" value="4" class="w-20 bg-gray-900 border border-gray-700 px-2 py-1 rounded text-white text-sm">
+                  <span>i</span>
+                </div>
+              </div>
+            </div>
+            <div class="bg-gray-950 p-4 rounded-xl border border-gray-800 font-mono text-sm space-y-1" id="liveComplexOut"></div>
+          \`;
+          const calc = () => {
+            const r1 = parseFloat(document.getElementById('c1r').value) || 0;
+            const i1 = parseFloat(document.getElementById('c1i').value) || 0;
+            const r2 = parseFloat(document.getElementById('c2r').value) || 0;
+            const i2 = parseFloat(document.getElementById('c2i').value) || 0;
+            const addR = r1 + r2;
+            const addI = i1 + i2;
+            const mulR = (r1 * r2) - (i1 * i2);
+            const mulI = (r1 * i2) + (i1 * r2);
+            document.getElementById('liveComplexOut').innerHTML = \`
+              <span class="text-gray-400">Addition (c1 + c2):</span> <span class="text-emerald-400 font-bold">\${addR} + \${addI}i</span><br>
+              <span class="text-gray-400">Multiplication (c1 * c2):</span> <span class="text-cyan-400 font-bold">\${mulR} + \${mulI}i</span>
+            \`;
+          };
+          ['c1r', 'c1i', 'c2r', 'c2i'].forEach(id => document.getElementById(id).addEventListener('input', calc));
+          calc();
+        }
+      },
+      {
+        id: "exp9",
+        filename: "Experiment-9.cpp",
+        title: "Class Templates (Generic Stack)",
+        category: "Templates",
+        badgeColor: "bg-rose-500/10 text-rose-400 border-rose-500/20",
+        subtitle: "Generic class template implementation of a fixed-size LIFO Stack data structure supporting arbitrary types.",
+        concepts: ["Templates (template<typename T>)", "Generic Programming", "Stack Push & Pop", "Boundary Checks"],
+        code: `#include <iostream>
+using namespace std;
+
+template <typename T>
+class Stack
+{
+    T arr[5];
+    int top;
+
+public:
+    Stack()
+    {
+        top = -1;
+    }
+
+    void push(T a)
+    {
+        if (top == 4)
+        {
+            cout << "Stack full" << endl;
+        }
+        else
+        {
+            top++;
+            arr[top] = a;
+            cout << "Pushed: " << a << endl;
+        }
+    }
+
+    void pop()
+    {
+        if (top == -1)
+        {
+            cout << "Stack empty" << endl;
+        }
+        else
+        {
+            cout << "Element popped: " << arr[top] << endl;
+            top--;
+        }
+    }
+};
+
+int main()
+{
+    Stack<int> s;
+
+    s.push(10);
+    s.push(20);
+    s.push(30);
+
+    s.pop();
+
+    return 0;
+}`,
+        output: `Pushed: 10
+Pushed: 20
+Pushed: 30
+Element popped: 30`,
+        renderInteractive: (container) => {
+          let stackData = [10, 20, 30];
+          const renderStack = () => {
+            const visual = document.getElementById('stackVisual');
+            visual.innerHTML = '';
+            if (stackData.length === 0) {
+              visual.innerHTML = '<span class="text-xs text-gray-500 italic">[Empty Stack - Top = -1]</span>';
+            } else {
+              [...stackData].reverse().forEach((val, idx) => {
+                visual.innerHTML += \`
+                  <div class="px-4 py-2 bg-rose-950/40 border border-rose-800/60 rounded text-center text-sm font-mono text-rose-200 \${idx === 0 ? 'ring-2 ring-rose-500' : ''}">
+                    \${val} \${idx === 0 ? '<span class="text-xs text-rose-400 font-bold ml-2">← TOP</span>' : ''}
+                  </div>
+                \`;
+              });
+            }
+          };
+          container.innerHTML = \`
+            <h3 class="text-lg font-bold text-white mb-2">Live Generic Stack Simulator</h3>
+            <p class="text-sm text-gray-400 mb-4">Interact with the Stack template using Push and Pop operations (Max Capacity = 5).</p>
+            <div class="flex gap-3 mb-4">
+              <input id="stackInput" type="number" value="40" class="w-32 bg-gray-950 border border-gray-700 px-3 py-1.5 rounded-lg text-white text-sm">
+              <button onclick="stackPush()" class="bg-rose-600 hover:bg-rose-500 text-white text-xs px-4 py-1.5 rounded-lg font-medium transition">Push</button>
+              <button onclick="stackPop()" class="bg-gray-800 hover:bg-gray-700 text-white text-xs px-4 py-1.5 rounded-lg font-medium transition">Pop</button>
+            </div>
+            <div class="bg-gray-950 p-4 rounded-xl border border-gray-800">
+              <div class="text-xs text-gray-400 mb-2">Visual Stack Buffer:</div>
+              <div id="stackVisual" class="space-y-2 max-w-xs"></div>
+            </div>
+          \`;
+          window.stackPush = () => {
+            if (stackData.length >= 5) {
+              alert("Stack full! (Capacity 5 reached)");
+              return;
+            }
+            const val = parseInt(document.getElementById('stackInput').value) || 0;
+            stackData.push(val);
+            renderStack();
+          };
+          window.stackPop = () => {
+            if (stackData.length === 0) {
+              alert("Stack empty!");
+              return;
+            }
+            stackData.pop();
+            renderStack();
+          };
+          renderStack();
+        }
+      },
+      {
+        id: "miniProject",
+        filename: "Mini-Project.cpp",
+        title: "CAREPASS - Hospital Management",
+        category: "Mini-Project",
+        badgeColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+        subtitle: "Complete Hospital Patient Record Management System utilizing OOP encapsulation, vectors, and file I/O operations.",
+        concepts: ["Complete OOP System", "std::vector Dynamic Storage", "File Handling (ofstream)", "CRUD Operations"],
+        code: `#include <iostream>
+#include <fstream>
+#include <vector>
+#include <string>
+using namespace std;
+
+class Patient {
+private:
+    int id, age;
+    string name, disease, status;
+
+public:
+    Patient(int i, string n, int a, string d) {
+        id = i;
+        name = n;
+        age = a;
+        disease = d;
+        status = "Admitted";
+    }
+
+    int getID() {
+        return id;
+    }
+
+    void display() {
+        cout << "\\nPatient ID: " << id;
+        cout << "\\nName: " << name;
+        cout << "\\nAge: " << age;
+        cout << "\\nCondition: " << disease;
+        cout << "\\nStatus: " << status << endl;
+    }
+
+    void updateStatus(string s) {
+        status = s;
+    }
+
+    void save(ofstream &file) {
+        file << id << "," << name << "," << age
+             << "," << disease << "," << status << endl;
+    }
+};
+
+int main() {
+    vector<Patient> patients;
+    int choice;
+
+    do {
+        cout << "\\n===== CAREPASS =====";
+        cout << "\\n1. Add Patient";
+        cout << "\\n2. Display Patients";
+        cout << "\\n3. Search Patient";
+        cout << "\\n4. Update Patient Status";
+        cout << "\\n5. Discharge Patient";
+        cout << "\\n6. Save Records";
+        cout << "\\n7. Exit";
+        cout << "\\nEnter choice: ";
+        cin >> choice;
+
+        if (choice == 1) {
+            int id, age;
+            string name, disease;
+
+            cout << "Enter Patient ID: ";
+            cin >> id;
+            cout << "Enter Name: ";
+            cin >> name;
+            cout << "Enter Age: ";
+            cin >> age;
+            cout << "Enter Condition: ";
+            cin >> disease;
+
+            patients.emplace_back(id, name, age, disease);
+            cout << "Patient added successfully!";
+        }
+        else if (choice == 2) {
+            if (patients.empty())
+                cout << "No patients available.";
+            for (auto &p : patients)
+                p.display();
+        }
+        else if (choice == 3) {
+            int id;
+            bool found = false;
+            cout << "Enter Patient ID: ";
+            cin >> id;
+
+            for (auto &p : patients) {
+                if (p.getID() == id) {
+                    p.display();
+                    found = true;
+                }
+            }
+            if (!found)
+                cout << "Patient not found.";
+        }
+        else if (choice == 4 || choice == 5) {
+            int id;
+            bool found = false;
+            cout << "Enter Patient ID: ";
+            cin >> id;
+
+            for (auto &p : patients) {
+                if (p.getID() == id) {
+                    if (choice == 4)
+                        p.updateStatus("Under Treatment");
+                    else
+                        p.updateStatus("Discharged");
+
+                    cout << "Status updated successfully!";
+                    found = true;
+                }
+            }
+            if (!found)
+                cout << "Patient not found.";
+        }
+        else if (choice == 6) {
+            ofstream file("patients.txt");
+            for (auto &p : patients)
+                p.save(file);
+            file.close();
+            cout << "Records saved successfully!";
+        }
+    } while (choice != 7);
+
+    return 0;
+}`,
+        output: `===== CAREPASS =====
+1. Add Patient
+2. Display Patients
+3. Search Patient
+4. Update Patient Status
+5. Discharge Patient
+6. Save Records
+7. Exit
+Enter choice: 1
+Enter Patient ID: 101
+Enter Name: Rahul_Sharma
+Enter Age: 42
+Enter Condition: Pneumonia
+Patient added successfully!
+
+===== CAREPASS =====
+Enter choice: 2
+Patient ID: 101
+Name: Rahul_Sharma
+Age: 42
+Condition: Pneumonia
+Status: Admitted`,
+        renderInteractive: (container) => {
+          let livePatients = [
+            { id: 101, name: "Rahul Sharma", age: 42, disease: "Pneumonia", status: "Admitted" },
+            { id: 102, name: "Pooja Patel", age: 29, disease: "Fracture", status: "Under Treatment" }
+          ];
+
+          const refreshTable = () => {
+            const tbody = document.getElementById('patientsTableBody');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+            if (livePatients.length === 0) {
+              tbody.innerHTML = '<tr><td colspan="6" class="px-4 py-3 text-center text-gray-500">No patient records available</td></tr>';
+              return;
+            }
+            livePatients.forEach(p => {
+              const statusColor = p.status === 'Discharged' ? 'bg-gray-800 text-gray-400' :
+                                  p.status === 'Under Treatment' ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20' :
+                                  'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20';
+              tbody.innerHTML += \`
+                <tr class="border-b border-gray-800 hover:bg-gray-800/40">
+                  <td class="px-4 py-3 font-mono text-emerald-400">\${p.id}</td>
+                  <td class="px-4 py-3 font-medium text-white">\${p.name}</td>
+                  <td class="px-4 py-3 text-gray-300">\${p.age}</td>
+                  <td class="px-4 py-3 text-gray-300">\${p.disease}</td>
+                  <td class="px-4 py-3">
+                    <span class="text-xs px-2 py-0.5 rounded-full font-medium \${statusColor}">\${p.status}</span>
+                  </td>
+                  <td class="px-4 py-3 text-right space-x-1">
+                    <button onclick="carepassSetStatus(\${p.id}, 'Under Treatment')" class="text-xs bg-amber-600/30 hover:bg-amber-600/50 text-amber-300 px-2 py-1 rounded">Treat</button>
+                    <button onclick="carepassSetStatus(\${p.id}, 'Discharged')" class="text-xs bg-red-600/30 hover:bg-red-600/50 text-red-300 px-2 py-1 rounded">Discharge</button>
+                  </td>
+                </tr>
+              \`;
+            });
+          };
+
+          container.innerHTML = \`
+            <div class="flex items-center justify-between mb-3">
+              <div>
+                <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                  <i class="fa-solid fa-hospital text-emerald-400"></i>
+                  CAREPASS Patient Management Console
+                </h3>
+                <p class="text-xs text-gray-400">Live web emulation of the C++ Patient class and vector storage</p>
+              </div>
+              <button onclick="carepassExport()" class="text-xs bg-gray-800 hover:bg-gray-700 text-gray-200 px-3 py-1.5 rounded-lg border border-gray-700 flex items-center gap-1.5">
+                <i class="fa-solid fa-file-export"></i> Save (Export CSV)
+              </button>
+            </div>
+
+            <!-- Add Patient Form -->
+            <div class="bg-gray-950 p-4 rounded-xl border border-gray-800 mb-4">
+              <span class="text-xs font-semibold text-emerald-400 block mb-2">Admit New Patient</span>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3">
+                <input id="cpId" type="number" placeholder="ID (e.g. 103)" class="bg-gray-900 border border-gray-700 px-2.5 py-1.5 rounded text-xs text-white">
+                <input id="cpName" type="text" placeholder="Patient Name" class="bg-gray-900 border border-gray-700 px-2.5 py-1.5 rounded text-xs text-white">
+                <input id="cpAge" type="number" placeholder="Age" class="bg-gray-900 border border-gray-700 px-2.5 py-1.5 rounded text-xs text-white">
+                <input id="cpCond" type="text" placeholder="Condition" class="bg-gray-900 border border-gray-700 px-2.5 py-1.5 rounded text-xs text-white">
+              </div>
+              <button onclick="carepassAdd()" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs px-4 py-1.5 rounded-lg font-medium transition">
+                + Add Patient to Vector
+              </button>
+            </div>
+
+            <!-- Table of Patients -->
+            <div class="overflow-x-auto border border-gray-800 rounded-xl bg-gray-950">
+              <table class="w-full text-left text-xs">
+                <thead class="bg-gray-900 text-gray-400 border-b border-gray-800">
+                  <tr>
+                    <th class="px-4 py-2.5">ID</th>
+                    <th class="px-4 py-2.5">Name</th>
+                    <th class="px-4 py-2.5">Age</th>
+                    <th class="px-4 py-2.5">Condition</th>
+                    <th class="px-4 py-2.5">Status</th>
+                    <th class="px-4 py-2.5 text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="patientsTableBody"></tbody>
+              </table>
+            </div>
+          \`;
+
+          window.carepassAdd = () => {
+            const id = parseInt(document.getElementById('cpId').value);
+            const name = document.getElementById('cpName').value.trim();
+            const age = parseInt(document.getElementById('cpAge').value);
+            const disease = document.getElementById('cpCond').value.trim();
+
+            if (!id || !name || !age || !disease) {
+              alert("Please fill all patient fields");
+              return;
+            }
+            livePatients.push({ id, name, age, disease, status: "Admitted" });
+            document.getElementById('cpId').value = '';
+            document.getElementById('cpName').value = '';
+            document.getElementById('cpAge').value = '';
+            document.getElementById('cpCond').value = '';
+            refreshTable();
+          };
+
+          window.carepassSetStatus = (id, newStatus) => {
+            const p = livePatients.find(x => x.id === id);
+            if (p) {
+              p.status = newStatus;
+              refreshTable();
+            }
+          };
+
+          window.carepassExport = () => {
+            let csv = "ID,Name,Age,Condition,Status\\n";
+            livePatients.forEach(p => {
+              csv += \`\${p.id},\${p.name},\${p.age},\${p.disease},\${p.status}\\n\`;
+            });
+            const blob = new Blob([csv], { type: "text/csv" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "patients.txt";
+            a.click();
+          };
+
+          refreshTable();
+        }
+      }
+    ];
+
+    let currentExpIndex = 0;
+    let currentTab = 'code';
+
+    function init() {
+      const nav = document.getElementById('navItems');
+      nav.innerHTML = '';
+      experiments.forEach((exp, idx) => {
+        const btn = document.createElement('button');
+        btn.className = \`w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium transition flex items-center justify-between \${
+          idx === currentExpIndex ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'text-gray-400 hover:bg-gray-800/60 hover:text-gray-200'
+        }\`;
+        btn.onclick = () => selectExperiment(idx);
+        btn.innerHTML = \`
+          <div class="flex items-center gap-2 truncate">
+            <span class="font-mono text-gray-500 w-5">\${idx + 1}.</span>
+            <span class="truncate">\${exp.title}</span>
+          </div>
+          <span class="font-mono text-[10px] text-gray-500 shrink-0">\${exp.filename.replace('.cpp', '')}</span>
+        \`;
+        btn.id = \`nav-btn-\${idx}\`;
+        nav.appendChild(btn);
+      });
+      loadCurrentExperiment();
+    }
+
+    function selectExperiment(index) {
+      currentExpIndex = index;
+      document.querySelectorAll('#navItems button').forEach((btn, idx) => {
+        if (idx === index) {
+          btn.className = 'w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium transition flex items-center justify-between bg-emerald-500/10 text-emerald-400 border border-emerald-500/20';
+        } else {
+          btn.className = 'w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium transition flex items-center justify-between text-gray-400 hover:bg-gray-800/60 hover:text-gray-200';
+        }
+      });
+      loadCurrentExperiment();
+    }
+
+    function loadCurrentExperiment() {
+      const exp = experiments[currentExpIndex];
+      document.getElementById('expTitle').textContent = exp.title;
+      document.getElementById('expSubtitle').textContent = exp.subtitle;
+      document.getElementById('badgeFilename').textContent = exp.filename;
+      document.getElementById('codeEditorLabel').textContent = exp.filename;
+      document.getElementById('badgeCategory').textContent = exp.category;
+
+      // Concepts
+      const conceptBox = document.getElementById('conceptPills');
+      conceptBox.innerHTML = '';
+      exp.concepts.forEach(c => {
+        const pill = document.createElement('span');
+        pill.className = 'text-[11px] px-2.5 py-0.5 rounded-md bg-gray-800 text-gray-300 border border-gray-700/60';
+        pill.textContent = c;
+        conceptBox.appendChild(pill);
+      });
+
+      // Code Block
+      const codeEl = document.getElementById('codeBlock');
+      codeEl.textContent = exp.code;
+      Prism.highlightElement(codeEl);
+
+      // Output Block
+      document.getElementById('outputBlock').textContent = exp.output;
+
+      // Compilation command hints
+      document.getElementById('cmdGpp').textContent = \`g++ -o app \${exp.filename} && ./app\`;
+      document.getElementById('cmdWin').textContent = \`g++ -o app.exe \${exp.filename} ; .\\\\app.exe\`;
+
+      // Download Button
+      const blob = new Blob([exp.code], { type: 'text/plain' });
+      const dlBtn = document.getElementById('downloadBtn');
+      dlBtn.href = URL.createObjectURL(blob);
+      dlBtn.download = exp.filename;
+
+      // Render Interactive
+      const interactiveContainer = document.getElementById('interactiveContent');
+      if (exp.renderInteractive) {
+        exp.renderInteractive(interactiveContainer);
+      }
+    }
+
+    function switchTab(tab) {
+      currentTab = tab;
+      const tabs = {
+        code: { btn: 'tabCode', view: 'viewCode' },
+        output: { btn: 'tabOutput', view: 'viewOutput' },
+        interactive: { btn: 'tabInteractive', view: 'viewInteractive' }
+      };
+
+      Object.keys(tabs).forEach(t => {
+        const isCurrent = (t === tab);
+        const btn = document.getElementById(tabs[t].btn);
+        const view = document.getElementById(tabs[t].view);
+        if (isCurrent) {
+          btn.className = 'px-4 py-2 text-sm font-medium border-b-2 border-emerald-500 text-emerald-400 transition flex items-center gap-2';
+          view.classList.remove('hidden');
+        } else {
+          btn.className = 'px-4 py-2 text-sm font-medium border-b-2 border-transparent text-gray-400 hover:text-gray-200 transition flex items-center gap-2';
+          view.classList.add('hidden');
+        }
+      });
+    }
+
+    function copyCode() {
+      const code = experiments[currentExpIndex].code;
+      navigator.clipboard.writeText(code).then(() => {
+        const icon = document.getElementById('copyIcon');
+        const text = document.getElementById('copyText');
+        icon.className = 'fa-solid fa-check text-emerald-400';
+        text.textContent = 'Copied!';
+        setTimeout(() => {
+          icon.className = 'fa-regular fa-copy';
+          text.textContent = 'Copy Code';
+        }, 2000);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
