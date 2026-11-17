@@ -1,0 +1,42 @@
+#include <iostream>
+#include <vector>
+#include <map>
+#include <unordered_map>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+    vector<int> marks = {50, 80, 60};
+
+    sort(marks.begin(), marks.end());
+
+    cout << "Sorted marks: ";
+    for(int m : marks)
+        cout << m << " ";
+
+    cout << endl;
+
+    auto i = find_if(marks.begin(), marks.end(),
+                      [](int m){ return m > 60; });
+
+    cout << "Found: " << *i << endl;
+
+    transform(marks.begin(), marks.end(), marks.begin(),
+              [](int m){ return m + 5; });
+
+    cout << "Updated: ";
+    for(int m : marks)
+        cout << m << " ";
+
+    map<int, int> a;
+    a[1] = 80;
+
+    unordered_map<int, int> b;
+    b[2] = 90;
+
+    cout << "\nMap: " << a[1];
+    cout << "\nUnordered Map: " << b[2];
+
+    return 0;
+}
