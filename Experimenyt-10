@@ -1,0 +1,36 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main()
+{
+    fstream f;
+    int roll;
+    string name;
+    float marks;
+
+    // Write student records
+    f.open("student.csv", ios::out);
+
+    f << "Roll,Name,Marks\n";
+    f << "1,Amit,80\n";
+    f << "2,Riya,90\n";
+
+    cout << "Records stored\n";
+    f.close();
+
+    // Read student records
+    f.open("student.csv", ios::in);
+
+    string line;
+    while(getline(f, line))
+        cout << line << endl;
+
+    // File pointer functions
+    cout << "Position: " << f.tellg() << endl;
+    f.seekg(0);
+
+    f.close();
+
+    return 0;
+}
